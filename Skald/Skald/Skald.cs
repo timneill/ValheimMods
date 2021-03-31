@@ -4,7 +4,9 @@ using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Configuration;
 using HarmonyLib;
+using fastJSON;
 using UnityEngine;
+using System.IO;
 
 namespace Skald
 {
@@ -14,6 +16,9 @@ namespace Skald
         const string PLUGIN_ID = "net.kinghfb.valheim.skald";
         const string PLUGIN_NAME = "Skald";
         const string PLUGIN_VERSION = "1.0.0";
+
+        const string DREAM_TEXTS = @"\dreams.json";
+        const string RUNESTONE_TEXTS = @"\runestones.json";
 
         public static ConfigEntry<bool> modEnabled;
 
@@ -28,7 +33,7 @@ namespace Skald
             {
                 return;
             }
-
+            
             Logger.Log(LogLevel.Info, "Initializing Skald...");
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PLUGIN_ID);
@@ -39,18 +44,13 @@ namespace Skald
 
         private void InitializeSkaldTexts()
         {
-            Logger.Log(LogLevel.Info, "Generating Skald texts...");
-            
-            for (int i = 0; i < 10; i++)
-            {
-                string rstxt = $"Lorem ipsum runestoner SKald dolor sit amet. {i}";
-                Logger.Log(LogLevel.Info, $"added runestone text: {rstxt}");
-                m_SkaldRunestoneTexts.Add(rstxt);
+            string libDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-                string dreamtxt = $"Lorem ipsum dream SKald dolor sit amet. {i}";
-                Logger.Log(LogLevel.Info, $"added dream text: {dreamtxt}");
-                m_SkaldDreamTexts.Add(dreamtxt);
-            }
+            Logger.Log(LogLevel.Info, "Loading dream texts...");
+            m_SkaldDreamTexts = JSON.ToObject<List<string>>(File.ReadAllText(libDir + DREAM_TEXTS));
+
+            Logger.Log(LogLevel.Info, "Loading runestone texts...");
+            m_SkaldRunestoneTexts = JSON.ToObject<List<string>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
         }
 
         [HarmonyPatch(typeof(RuneStone), nameof(RuneStone.Interact))]

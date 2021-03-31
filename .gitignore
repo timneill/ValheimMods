@@ -350,4 +350,8 @@ MigrationBackup/
 .ionide/
 *.sln
 *.csproj
-**/lib/*
+Skald/Skald/lib/UnityEngine.CoreModule.dll
+Skald/Skald/lib/UnityEngine.dll
+Skald/Skald/lib/BepInEx.dll
+Skald/Skald/lib/assembly_valheim.dll
+Skald/Skald/lib/0Harmony.dll
