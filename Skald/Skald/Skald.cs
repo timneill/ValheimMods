@@ -30,7 +30,7 @@ namespace Skald
 
         private static SkaldMod self;
         private static Assembly assembly;
-        private static Random rng = new Random();
+        private static readonly Random rng = new Random();
 
         internal void Awake()
         {
@@ -94,16 +94,6 @@ namespace Skald
             return mappedTexts;
         }
 
-        private List<RuneStone.RandomRuneText> GetAvailableRuneTexts(string runestoneName)
-        {
-            if (!m_SkaldRunestoneTexts.TryGetValue(runestoneName, out List<RuneStone.RandomRuneText> availableTexts))
-            {
-                return null;
-            }
-
-            return availableTexts;
-        }
-
         [HarmonyPatch(typeof(DreamTexts), nameof(DreamTexts.GetRandomDreamText))]
         public class DreamTextsPatch
         {
@@ -141,7 +131,6 @@ namespace Skald
                     m_SkaldRunestoneTexts.ContainsKey(__instance.name)
                 ))
                 {
-                    self.Logger.Log(LogLevel.Info, "modifier not pressed");
                     return true;
                 }
 
