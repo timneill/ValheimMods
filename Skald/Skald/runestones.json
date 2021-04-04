@@ -1,4 +1,6 @@
-[
-  "The great tree Yggdrasil connects all of those of the nine realms.",
-  "Ymir gave his flesh to create the world. His servants the jǫtunn walk this earth soaked in his blood."
-]
+{
+  "RuneStone_Meadows": [
+    "$lore_meadows_skald_01",
+    "$lore_meadows_skald_02"
+  ]
+}

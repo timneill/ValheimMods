@@ -355,3 +355,9 @@ Skald/Skald/lib/UnityEngine.dll
 Skald/Skald/lib/BepInEx.dll
 Skald/Skald/lib/assembly_valheim.dll
 Skald/Skald/lib/0Harmony.dll
+Skald/Skald/lib/assembly_guiutils.dll
+Skald/Skald/lib/assembly_utils.dll
+Skald/Skald/lib/UnityEngine.AssetBundleModule.dll
+Skald/Skald/lib/UnityEngine.InputLegacyModule.dll
+Skald/Skald/lib/UnityEngine.InputModule.dll
+Skald/Skald/lib/ValheimLib.dll

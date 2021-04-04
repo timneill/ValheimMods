@@ -1,16 +1,18 @@
-﻿using System.Reflection;
-using System.Collections.Generic;
-using BepInEx;
-using BepInEx.Logging;
+﻿using BepInEx;
 using BepInEx.Configuration;
-using HarmonyLib;
+using BepInEx.Logging;
 using fastJSON;
-using UnityEngine;
+using HarmonyLib;
+using Random = System.Random;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using UnityEngine;
 
 namespace Skald
 {
     [BepInPlugin(PLUGIN_ID, PLUGIN_NAME, PLUGIN_VERSION)]
+    [BepInDependency(ValheimLib.ValheimLib.ModGuid)]
     public class SkaldMod : BaseUnityPlugin
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.skald";
@@ -20,23 +22,34 @@ namespace Skald
         const string DREAM_TEXTS = @"\dreams.json";
         const string RUNESTONE_TEXTS = @"\runestones.json";
 
-        public static ConfigEntry<bool> modEnabled;
-
-        protected static List<string> m_SkaldRunestoneTexts = new List<string>();
         protected static List<string> m_SkaldDreamTexts = new List<string>();
+        protected static Dictionary<string, List<RuneStone.RandomRuneText>> m_SkaldRunestoneTexts = new Dictionary<string, List<RuneStone.RandomRuneText>>();
+
+        private static ConfigEntry<bool> modEnabled;
+        private static ConfigEntry<string> readMoreModifierKey;
+
+        private static SkaldMod self;
+        private static Assembly assembly;
+        private static Random rng = new Random();
 
         internal void Awake()
         {
+            self = this;
+
             modEnabled = Config.Bind<bool>("General", "Enabled", true, "Enable this mod");
+            readMoreModifierKey = Config.Bind<string>("General", "ReadMoreModifierKey", "left shift", "Modifier key for additional functionality.");
 
             if (!modEnabled.Value)
             {
                 return;
             }
-            
+
             Logger.Log(LogLevel.Info, "Initializing Skald...");
 
-            Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PLUGIN_ID);
+            // Recommended way to get current Assembly
+            assembly = typeof(SkaldMod).Assembly;
+
+            Harmony.CreateAndPatchAll(assembly, PLUGIN_ID);
             InitializeSkaldTexts();
 
             Logger.Log(LogLevel.Info, "Skald initialized.");
@@ -44,34 +57,51 @@ namespace Skald
 
         private void InitializeSkaldTexts()
         {
-            string libDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string libDir = Path.GetDirectoryName(assembly.Location);
 
             Logger.Log(LogLevel.Info, "Loading dream texts...");
+            // Dream texts are a simple flat array of translation keys
             m_SkaldDreamTexts = JSON.ToObject<List<string>>(File.ReadAllText(libDir + DREAM_TEXTS));
+            Logger.Log(LogLevel.Info, $"Loaded {m_SkaldDreamTexts.Count} dream texts.");
 
             Logger.Log(LogLevel.Info, "Loading runestone texts...");
-            m_SkaldRunestoneTexts = JSON.ToObject<List<string>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
+
+            // Runestone texts are a dictionary: {"runestone type" => ["translation keys"]}
+            Dictionary<string, List<string>> runestoneTextData = JSON.ToObject<Dictionary<string, List<string>>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
+            Logger.Log(LogLevel.Info, $"Loaded {runestoneTextData.Count} runestone replacement targets");
+            
+            foreach (var runestoneData in runestoneTextData)
+            {
+                List<RuneStone.RandomRuneText> runestoneTexts = MapList(runestoneData.Value);
+                m_SkaldRunestoneTexts.Add(runestoneData.Key, runestoneTexts);
+
+                Logger.Log(LogLevel.Info, $"{runestoneData.Key} has {runestoneTexts.Count} texts.");
+            }
+
+            Logger.Log(LogLevel.Info, "Skald texts loaded.");
         }
 
-        [HarmonyPatch(typeof(RuneStone), nameof(RuneStone.Interact))]
-        public class RunestonePatch
+        // Simply maps List<string> to List<RandomRuneText>
+        private List<RuneStone.RandomRuneText> MapList(List<string> runestoneTextData)
         {
-            private static bool m_SkaldRunestonesInitialized = false;
+            List<RuneStone.RandomRuneText> mappedTexts = new List<RuneStone.RandomRuneText>();
 
-            public static void Prefix(ref List<RuneStone.RandomRuneText> ___m_randomTexts)
+            foreach (string runestoneText in runestoneTextData)
             {
-                if (!m_SkaldRunestonesInitialized)
-                {
-                    foreach (string runestoneText in m_SkaldRunestoneTexts)
-                    {
-                        ___m_randomTexts.Add(new RuneStone.RandomRuneText {
-                            m_text = runestoneText
-                        });
-                    }
-
-                    m_SkaldRunestonesInitialized = true;
-                }
+                mappedTexts.Add(new RuneStone.RandomRuneText { m_text = runestoneText });
             }
+
+            return mappedTexts;
+        }
+
+        private List<RuneStone.RandomRuneText> GetAvailableRuneTexts(string runestoneName)
+        {
+            if (!m_SkaldRunestoneTexts.TryGetValue(runestoneName, out List<RuneStone.RandomRuneText> availableTexts))
+            {
+                return null;
+            }
+
+            return availableTexts;
         }
 
         [HarmonyPatch(typeof(DreamTexts), nameof(DreamTexts.GetRandomDreamText))]
@@ -83,6 +113,8 @@ namespace Skald
             {
                 if (!m_SkaldDreamsInitialized)
                 {
+                    self.Logger.Log(LogLevel.Info, $"Prefixing dream texts. Current count: {___m_texts.Count}");
+
                     foreach (string dreamText in m_SkaldDreamTexts)
                     {
                         ___m_texts.Add(new DreamTexts.DreamText {
@@ -91,8 +123,47 @@ namespace Skald
                         });
                     }
 
+                    self.Logger.Log(LogLevel.Info, $"New dream text count: {___m_texts.Count}");
+
                     m_SkaldDreamsInitialized = true;
                 }
+            }
+        }
+
+        [HarmonyPatch(typeof(RuneStone), nameof(RuneStone.Interact))]
+        [HarmonyPriority(Priority.High)]
+        public class RuneStoneTextPatch
+        {
+            public static bool Prefix(ref RuneStone __instance, ref List<RuneStone.RandomRuneText> ___m_randomTexts)
+            {
+                if (!(
+                    Input.GetKey(readMoreModifierKey.Value) &&
+                    m_SkaldRunestoneTexts.ContainsKey(__instance.name)
+                ))
+                {
+                    self.Logger.Log(LogLevel.Info, "modifier not pressed");
+                    return true;
+                }
+
+                RuneStone.RandomRuneText randomText = m_SkaldRunestoneTexts[__instance.name][rng.Next(m_SkaldRunestoneTexts[__instance.name].Count)];
+
+                TextViewer.instance.ShowText(TextViewer.Style.Rune, "$skald_runestone_topic", randomText.m_text, autoHide: true);
+
+                return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(RuneStone), nameof(RuneStone.GetHoverText))]
+        public class RuneStoneHoverPatch
+        {
+            public static string Postfix(string __result, RuneStone __instance)
+            {
+                if (m_SkaldRunestoneTexts.ContainsKey(__instance.name))
+                {
+                    return (__result ?? "") + Localization.instance.Localize($"\n[<color=yellow><b>{readMoreModifierKey.Value} + $KEY_Use</b></color>] $skald_piece_rune_read_more");
+                }
+
+                return __result;
             }
         }
     }
