@@ -22,11 +22,12 @@ namespace Skald
         const string DREAM_TEXTS = @"\dreams.json";
         const string RUNESTONE_TEXTS = @"\runestones.json";
 
-        protected static List<string> m_SkaldDreamTexts = new List<string>();
+        protected static List<DreamTexts.DreamText> m_SkaldDreamTexts = new List<DreamTexts.DreamText>();
         protected static Dictionary<string, List<RuneStone.RandomRuneText>> m_SkaldRunestoneTexts = new Dictionary<string, List<RuneStone.RandomRuneText>>();
 
         private static ConfigEntry<bool> modEnabled;
         private static ConfigEntry<string> readMoreModifierKey;
+        private static ConfigEntry<float> dreamChance;
 
         private static SkaldMod self;
         private static Assembly assembly;
@@ -37,7 +38,8 @@ namespace Skald
             self = this;
 
             modEnabled = Config.Bind<bool>("General", "Enabled", true, "Enable this mod");
-            readMoreModifierKey = Config.Bind<string>("General", "ReadMoreModifierKey", "left shift", "Modifier key for additional functionality.");
+            readMoreModifierKey = Config.Bind<string>("General", "Modifier key", "left shift", "Modifier key for additional functionality.");
+            dreamChance = Config.Bind<float>("General", "Chance to dream", 1.0f, "Updated chance to dream. Game default 0.1 (10%)");
 
             if (!modEnabled.Value)
             {
@@ -60,30 +62,49 @@ namespace Skald
             string libDir = Path.GetDirectoryName(assembly.Location);
 
             Logger.Log(LogLevel.Info, "Loading dream texts...");
-
-            // Dream texts are a simple flat array of translation keys
-            m_SkaldDreamTexts = JSON.ToObject<List<string>>(File.ReadAllText(libDir + DREAM_TEXTS));
-            Logger.Log(LogLevel.Info, $"Loaded {m_SkaldDreamTexts.Count} dream texts.");
+            LoadDreamTexts(libDir);
 
             Logger.Log(LogLevel.Info, "Loading runestone texts...");
-
-            // Runestone texts are a dictionary: {"runestone type" => ["translation keys"]}
-            Dictionary<string, List<string>> runestoneTextData = JSON.ToObject<Dictionary<string, List<string>>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
-            Logger.Log(LogLevel.Info, $"Loaded {runestoneTextData.Count} runestone replacement targets");
-
-            foreach (var runestoneData in runestoneTextData)
-            {
-                List<RuneStone.RandomRuneText> runestoneTexts = MapList(runestoneData.Value);
-                m_SkaldRunestoneTexts.Add(runestoneData.Key, runestoneTexts);
-
-                Logger.Log(LogLevel.Info, $"{runestoneData.Key} has {runestoneTexts.Count} texts.");
-            }
+            LoadRunestoneTexts(libDir);
 
             Logger.Log(LogLevel.Info, "Skald texts loaded.");
         }
 
+        private void LoadDreamTexts(string libDir)
+        {
+            // Dream texts are a list of dictionary values with texts and conditional keys
+            List<DreamDataItem> dreamTexts = JSON.ToObject<List<DreamDataItem>>(File.ReadAllText(libDir + DREAM_TEXTS));
+
+            foreach (DreamDataItem dreamData in dreamTexts)
+            {
+                m_SkaldDreamTexts.Add(new DreamTexts.DreamText()
+                {
+                    m_text = dreamData.text,
+                    m_trueKeys = dreamData.on,
+                    m_falseKeys = dreamData.off
+                });
+            }
+
+            Logger.Log(LogLevel.Info, $"Loaded {m_SkaldDreamTexts.Count} dream texts.");
+        } 
+
+        private void LoadRunestoneTexts(string libDir)
+        {
+            // Runestone texts are a dictionary: {"runestone type" => ["translation keys"]}
+            Dictionary<string, List<string>> runestoneTextData = JSON.ToObject<Dictionary<string, List<string>>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
+            Logger.Log(LogLevel.Info, $"Loaded {runestoneTextData.Count} runestone targets");
+
+            foreach (var runestoneData in runestoneTextData)
+            {
+                List<RuneStone.RandomRuneText> runestoneTexts = MapRunestoneList(runestoneData.Value);
+                m_SkaldRunestoneTexts.Add(runestoneData.Key, runestoneTexts);
+
+                Logger.Log(LogLevel.Info, $"{runestoneData.Key} has {runestoneTexts.Count} texts.");
+            }
+        }
+
         // Simply maps List<string> to List<RandomRuneText>
-        private List<RuneStone.RandomRuneText> MapList(List<string> runestoneTextData)
+        private List<RuneStone.RandomRuneText> MapRunestoneList(List<string> runestoneTextData)
         {
             List<RuneStone.RandomRuneText> mappedTexts = new List<RuneStone.RandomRuneText>();
 
@@ -93,6 +114,13 @@ namespace Skald
             }
 
             return mappedTexts;
+        }
+
+        public class DreamDataItem
+        {
+            public string text { get; set; }
+            public List<string> on { get; set; }
+            public List<string> off { get; set; }
         }
 
         [HarmonyPatch(typeof(DreamTexts))]
@@ -106,17 +134,15 @@ namespace Skald
             {
                 if (!m_SkaldDreamsInitialized)
                 {
-                    self.Logger.Log(LogLevel.Info, $"Prefixing dream texts. Current count: {___m_texts.Count}");
+                    self.Logger.Log(LogLevel.Info, $"Preparing to add dream texts. Current count: {___m_texts.Count}");
+                    ___m_texts.AddRange(m_SkaldDreamTexts);
 
-                    foreach (string dreamText in m_SkaldDreamTexts)
+                    foreach (DreamTexts.DreamText dreamText in ___m_texts)
                     {
-                        ___m_texts.Add(new DreamTexts.DreamText {
-                            m_text = dreamText,
-                            m_chanceToDream = 1.0f
-                        });
+                        dreamText.m_chanceToDream = dreamChance.Value;
                     }
 
-                    self.Logger.Log(LogLevel.Info, $"New dream text count: {___m_texts.Count}");
+                    self.Logger.Log(LogLevel.Info, $"Dreams added. New count: {___m_texts.Count}");
 
                     m_SkaldDreamsInitialized = true;
                 }

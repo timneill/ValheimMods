@@ -1,5 +1,27 @@
 [
-  "$skald_dream_01",
-  "$skald_dream_02",
-  "$skald_dream_03"
+  {
+    "text": "$skald_dream_random_01",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_random_02",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_random_03",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_eikthyr_01",
+    "on": [],
+    "off": ["defeated_eikthyr"]
+  },
+  {
+    "text": "$skald_dream_elder_01",
+    "on": ["defeated_eikthyr"],
+    "off": ["defeated_gdking"]
+  }
 ]
