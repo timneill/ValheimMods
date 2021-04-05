@@ -60,6 +60,7 @@ namespace Skald
             string libDir = Path.GetDirectoryName(assembly.Location);
 
             Logger.Log(LogLevel.Info, "Loading dream texts...");
+
             // Dream texts are a simple flat array of translation keys
             m_SkaldDreamTexts = JSON.ToObject<List<string>>(File.ReadAllText(libDir + DREAM_TEXTS));
             Logger.Log(LogLevel.Info, $"Loaded {m_SkaldDreamTexts.Count} dream texts.");
@@ -69,7 +70,7 @@ namespace Skald
             // Runestone texts are a dictionary: {"runestone type" => ["translation keys"]}
             Dictionary<string, List<string>> runestoneTextData = JSON.ToObject<Dictionary<string, List<string>>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
             Logger.Log(LogLevel.Info, $"Loaded {runestoneTextData.Count} runestone replacement targets");
-            
+
             foreach (var runestoneData in runestoneTextData)
             {
                 List<RuneStone.RandomRuneText> runestoneTexts = MapList(runestoneData.Value);
@@ -94,12 +95,14 @@ namespace Skald
             return mappedTexts;
         }
 
-        [HarmonyPatch(typeof(DreamTexts), nameof(DreamTexts.GetRandomDreamText))]
+        [HarmonyPatch(typeof(DreamTexts))]
         public class DreamTextsPatch
         {
             private static bool m_SkaldDreamsInitialized = false;
 
-            public static void Prefix(ref List<DreamTexts.DreamText> ___m_texts)
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(DreamTexts.GetRandomDreamText))]
+            public static void GetRandomDreamText(ref List<DreamTexts.DreamText> ___m_texts)
             {
                 if (!m_SkaldDreamsInitialized)
                 {
@@ -120,11 +123,13 @@ namespace Skald
             }
         }
 
-        [HarmonyPatch(typeof(RuneStone), nameof(RuneStone.Interact))]
+        [HarmonyPatch(typeof(RuneStone))]
         [HarmonyPriority(Priority.High)]
         public class RuneStoneTextPatch
         {
-            public static bool Prefix(ref RuneStone __instance, ref List<RuneStone.RandomRuneText> ___m_randomTexts)
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(RuneStone.Interact))]
+            public static bool Interact(ref RuneStone __instance, ref List<RuneStone.RandomRuneText> ___m_randomTexts)
             {
                 if (!(
                     Input.GetKey(readMoreModifierKey.Value) &&
@@ -140,12 +145,10 @@ namespace Skald
 
                 return false;
             }
-        }
 
-        [HarmonyPatch(typeof(RuneStone), nameof(RuneStone.GetHoverText))]
-        public class RuneStoneHoverPatch
-        {
-            public static string Postfix(string __result, RuneStone __instance)
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(RuneStone.GetHoverText))]
+            public static string GetHoverText(string __result, RuneStone __instance)
             {
                 if (m_SkaldRunestoneTexts.ContainsKey(__instance.name))
                 {

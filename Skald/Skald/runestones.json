@@ -2,5 +2,8 @@
   "RuneStone_Meadows": [
     "$lore_meadows_skald_01",
     "$lore_meadows_skald_02"
+  ],
+  "RuneTablet_Eikthyr": [
+    "$lore_eikthyr_skald_01"
   ]
 }
