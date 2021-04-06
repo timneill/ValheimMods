@@ -1,9 +1,51 @@
 {
+  "RuneStone_BlackForest": [
+    "$lore_blackforest_skald_01"
+  ],
+  "RuneStone_Boars": [
+    "$lore_boars_skald_01"
+  ],
+  "RuneStone_Drake": [
+    "$lore_drake_skald_01"
+  ],
+  "RuneStone_Draugr": [
+    "$lore_draugr_skald_01"
+  ],
+  "RuneStone_Greydwarfs": [
+    "$lore_greydwarfs_skald_01"
+  ],
   "RuneStone_Meadows": [
     "$lore_meadows_skald_01",
     "$lore_meadows_skald_02"
   ],
+  "RuneStone_Mountains": [
+    "$lore_mountains_skald_01"
+  ],
+  "RuneStone_Plains": [
+    "$lore_plains_skald_01"
+  ],
+  "RuneStone_Surtling": [
+    "$lore_surtlings_skald_01"
+  ],
+  "RuneStone_Swamps": [
+    "$lore_swamps_skald_01"
+  ],
+  "RuneTablet_Wraith": [
+    "$lore_wraith_skald_01"
+  ],
   "RuneTablet_Eikthyr": [
     "$lore_eikthyr_skald_01"
+  ],
+  "RuneStone_GDKing": [
+    "$lore_elder_skald_01"
+  ],
+  "RuneStone_Bonemass": [
+    "$lore_bonemass_skald_01"
+  ],
+  "RuneStone_DragonQueen": [
+    "$lore_moder_skald_01"
+  ],
+  "RuneTablet_GoblinKing": [
+    "$lore_yagluth_skald_01"
   ]
 }

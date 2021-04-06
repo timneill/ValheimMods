@@ -1,16 +1,21 @@
 [
   {
-    "text": "$skald_dream_random_01",
+    "text": "$skald_dream_01",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_random_02",
+    "text": "$skald_dream_02",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_random_03",
+    "text": "$skald_dream_03",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_04",
     "on": [],
     "off": []
   },
@@ -23,5 +28,25 @@
     "text": "$skald_dream_elder_01",
     "on": ["defeated_eikthyr"],
     "off": ["defeated_gdking"]
+  },
+  {
+    "text": "$skald_dream_elder_02",
+    "on": ["defeated_eikthyr"],
+    "off": ["defeated_gdking"]
+  },
+  {
+    "text": "$skald_dream_bonemass_01",
+    "on": ["defeated_eikthyr", "defeated_gdking"],
+    "off": ["defeated_bonemass"]
+  },
+  {
+    "text": "$skald_dream_moder_01",
+    "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass"],
+    "off": ["defeated_moder"]
+  },
+  {
+    "text": "$skald_dream_yagluth_01",
+    "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder"],
+    "off": ["defeated_goblinking"]
   }
 ]

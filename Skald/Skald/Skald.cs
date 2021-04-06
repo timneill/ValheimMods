@@ -151,11 +151,11 @@ namespace Skald
 
         [HarmonyPatch(typeof(RuneStone))]
         [HarmonyPriority(Priority.High)]
-        public class RuneStoneTextPatch
+        public class RuneStonePatch
         {
             [HarmonyPrefix]
             [HarmonyPatch(nameof(RuneStone.Interact))]
-            public static bool Interact(ref RuneStone __instance, ref List<RuneStone.RandomRuneText> ___m_randomTexts)
+            public static bool Interact(ref RuneStone __instance)
             {
                 if (!(
                     Input.GetKey(readMoreModifierKey.Value) &&
