@@ -1,6 +1,7 @@
 {
   "RuneStone_BlackForest": [
-    "$lore_blackforest_skald_01"
+    "$lore_blackforest_skald_01",
+    "$lore_blackforest_skald_02"
   ],
   "RuneStone_Boars": [
     "$lore_boars_skald_01"
@@ -16,16 +17,19 @@
   ],
   "RuneStone_Meadows": [
     "$lore_meadows_skald_01",
-    "$lore_meadows_skald_02"
+    "$lore_meadows_skald_02",
+    "$lore_meadows_skald_03"
   ],
   "RuneStone_Mountains": [
     "$lore_mountains_skald_01"
   ],
   "RuneStone_Plains": [
-    "$lore_plains_skald_01"
+    "$lore_plains_skald_01",
+    "$lore_plains_skald_02"
   ],
   "RuneStone_Surtling": [
-    "$lore_surtlings_skald_01"
+    "$lore_surtlings_skald_01",
+    "$lore_surtlings_skald_02"
   ],
   "RuneStone_Swamps": [
     "$lore_swamps_skald_01"

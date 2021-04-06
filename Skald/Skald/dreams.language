@@ -5,7 +5,7 @@ Its cargo is a horde creatures on their way to do battle with the gods themselve
 skald_dream_02,"A large dog, ragged and soaked in blood, watches you from the window. 
 
 When you awake, no trace of him remains."
-skald_dream_03,"In your dream a man hangs, upside down, from a tree. 
+skald_dream_03,"In your dream, a man hangs upside down from a tree, a spear-wound in his side. 
 
 He swings idly in the breeze and watches you with one piercing blue eye."
 skald_dream_04,"You dream you are in the land of the first of your people. 
@@ -17,6 +17,7 @@ skald_dream_04,"You sit in a great hall lined with torches and trophies of ages 
 
 You catch a glimpse of the moon as its light shines in from a gap in the ceiling and you feel at peace with the world."
 skald_dream_eikthyr_01,"You are stalked by a shadow in the shape of a great stag. His glowing eyes pierce the darkness and his antlers glow with energy."
+skald_dream_eikthyr_defeated_01,"In your dream you are hanging a trophy in a great hall. Amber mead flows and laughter is shared as the guests celebrate your victory. Outside, the wilderness is quiet…"
 skald_dream_elder_01,"A dream comes to you of you and your companions in the Black Forest. 
 
 Tracking a deer, the wilderness grows dark around you. You call out but your voice is swallowed by the shadow. 
