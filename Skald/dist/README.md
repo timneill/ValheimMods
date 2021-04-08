@@ -1,4 +1,4 @@
-Skald - Enhanced Lore Texts
+Skald - Extended Lore Texts
 ===========================
 
 This mod adds a series of lore-friendly and immersive text content to runestones and random dreams. Experience more than the same 6 random dreams and add a little more excitement when finding new Runestones in biomes. Perfect for an RP server or any viking fan.
