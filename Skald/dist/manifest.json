@@ -4,6 +4,7 @@
     "website_url": "https://github.com/timneill/ValheimMods/tree/main/Skald",
     "description": "Adds extra lore-friendly content to dreams and runestones.",
     "dependencies": [
-      "denikson-BepInExPack_Valheim-5.4.800"
+      "denikson-BepInExPack_Valheim-5.4.800",
+      "ValheimModding-ValheimLib-0.0.15"
     ]
   }

@@ -53,5 +53,10 @@
     "text": "$skald_dream_yagluth_01",
     "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder"],
     "off": ["defeated_goblinking"]
+  },
+  {
+    "text": "$skald_dream_defeated_all_01",
+    "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder", "defeated_goblinking"],
+    "off": []
   }
 ]
