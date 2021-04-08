@@ -9,7 +9,7 @@ in studded corslets,
 their shields glistened
 in the waning moon."
 lore_boars_skald_01,"The boar in these lands provide many gifts. Make of them weapons and tools to bend the world to your whim."
-lore_drake_skald_01,"Beware the breath of the Drake, as it inflicts a chill that no hearthfire can cure."
+lore_drake_skald_01,"Beware the Drake's breath. It inflicts a chill that no hearthfire can cure."
 lore_draugr_skald_01,"The draugr, with their hel-blár skin and age-worn armor are shackled to the places of their deaths, damned revenants seeking to drive away those foolish enough to venture close."
 lore_draugr_skald_02,"Beware those long dead that roam their barrows once more. These shadows of men called Draugr wield their weapons with inhuman ferocity.
 
@@ -31,13 +31,13 @@ Spirit gave Odin, sense gave Hœnir,
 blood gave Lodur, and goodly colour"
 lore_mountains_skald_01,"The mountain's winds are as deadly as its stalkers of the night. A mead of thistle and honey can help temper one's constitution against such threats."
 lore_plains_skald_01,"Be wary the creatures that still roam these lands, as they are the poisoned children of the Forsaken One."
-lore_plains_skald_02,"And the king bound his unknown guest and tortued him, putting him between two fires for eight nights without succour.
+lore_plains_skald_02,"And the king bound his unknown guest and tortured him, putting him between two fires for eight nights without succour.
 
-On the eigth day the guest revealed himself as Odin and that the king shall be cursed.
+On the eighth day the guest revealed himself as Odin and that the king shall be cursed.
 
 Having learned that he is undone, the king rose quickly, but the sword which he had lain upon his knee slipped and fell hilt down, such that he was impaled upon it.
  
-Odin vanished"
+Odin vanished."
 lore_surtlings_skald_01,"Surtr moves from the south 
 with the scathe of branches: 
 there shines from his sword 
@@ -53,7 +53,7 @@ Othin spake:
 Surt and the gracious gods;
 A hundred miles each way does it measure,
 And so are its boundaries set"
-lore_swamps_skald_01,"In these swamps the waters gnash at your feet, the fog follows you between the withered trees, and ancient warriors walk once more."
+lore_swamps_skald_01,"In these swamps the waters gnash at your feet, the fog follows you between withered trees, and ancient warriors walk once more."
 lore_wraith_skald_01,"These spectres of disgraced warriors only dare show themselves when the sun goes down.
 
 Swing your silvered sword and release them from their purgatory."
@@ -61,6 +61,6 @@ lore_eikthyr_skald_01,"Be wary of the great forked horns of Eikþyr.
 
 Their power can create rivers and shatter mountains."
 lore_elder_skald_01,"The Old One's favored children carry the key."
-lore_bonemass_skald_01,"Those stirred few that are withered and rotting desire eternal peace."
-lore_moder_skald_01,"Wary are her children, and vigilant is she."
+lore_bonemass_skald_01,"Those stirred few that are withered and rotting desire eternal rest."
+lore_moder_skald_01,"Wary are her spawn, and vigilant is she."
 lore_yagluth_skald_01,"His poisoned children worship his tainted soul."

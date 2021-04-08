@@ -20,12 +20,67 @@
     "off": []
   },
   {
+    "text": "$skald_dream_05",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_06",
+    "on": ["KilledTroll"],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_07",
+    "on": ["KilledTroll"],
+    "off": ["defeated_gdking"]
+  },
+  {
+    "text": "$skald_dream_08",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_09",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_10",
+    "on": ["killed_surtling"],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_11",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_12",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_13",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_14",
+    "on": [],
+    "off": []
+  },
+  {
     "text": "$skald_dream_eikthyr_01",
     "on": [],
     "off": ["defeated_eikthyr"]
   },
   {
     "text": "$skald_dream_eikthyr_defeated_01",
+    "on": ["defeated_eikthyr"],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_eikthyr_defeated_02",
     "on": ["defeated_eikthyr"],
     "off": []
   },
