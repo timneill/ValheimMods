@@ -25,33 +25,11 @@ Skald Runestone:
 
 Config
 ------
-{|
-|-
-|'''Config name'''
-|'''Description'''
-|'''Values'''
-|'''Default'''
-|-
-|-
-|`modEnabled`
-|Whether or not the game should load additional Skald texts.
-|Bool
-|True
-|-
-|-
-|`readMoreModifierKey`
-|Which modifier key to be used in addition to the 'Use' key to activate additional runestone texts.
-|right shift, left shift, right ctrl, left ctrl, right alt, left alt, right cmd, left cmd 
-|left shift
-|-
-|-
-|`dreamChance`
-|Percentage chance to trigger a dream per night.
-|0.0 - 1.0 (0% - 100%) 
-|1.0 (100%)
-|-
-|-
-|}
+| Config name | Description | Values | Default |
+| --- | --- | --- | --- |
+| `modEnabled` | Whether or not the game should load additional Skald texts. | `Bool` | `True` |
+| `readMoreModifierKey` | Which modifier key to be used in addition to the 'Use' key to activate additional runestone texts. | right shift, left shift, right ctrl, left ctrl, right alt, left alt, right cmd, left cmd | left shift |
+| `dreamChance` | Percentage chance to trigger a dream per night. | 0.0 - 1.0 (0% - 100%) | 1.0 (100%) |
 
 Todo
 ----
