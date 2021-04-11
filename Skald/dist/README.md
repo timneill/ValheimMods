@@ -1,9 +1,13 @@
 Skald - Extended Lore Texts
 ===========================
 
-This mod adds a series of lore-friendly and immersive text content to runestones and random dreams. Experience more than the same 6 random dreams and add a little more excitement when finding new Runestones in biomes. Perfect for an RP server or any viking fan.
+This mod adds a series of lore-friendly and immersive text content to runestones and random dreams.
 
-Also included are some additional world-specific texts for achieving certain milestones.
+Dreams are expanded significantly, including extra norse-related fluff, dreams triggered by progression, and portents of things to come.
+
+Runestone texts feature much more lore and also include information about the world such as recipes and fight tactics.
+
+Perfect for an RP server or players that like to avoid the wiki when playing.
 
 Features
 --------
@@ -31,9 +35,9 @@ Config
 | `readMoreModifierKey` | Which modifier key to be used in addition to the 'Use' key to activate additional runestone texts. | right shift, left shift, right ctrl, left ctrl, right alt, left alt, right cmd, left cmd | left shift |
 | `dreamChance` | Percentage chance to trigger a dream per night. | 0.0 - 1.0 (0% - 100%) | 1.0 (100%) |
 
-Todo
-----
+Upcoming
+--------
 * Translations for texts.
-* More texts as developers release content.
+* Much more content.
 
 Feedback and community translations welcome.
