@@ -1,6 +1,6 @@
 Context,English
 skald_piece_rune_read_more,"Read more"
-skald_runestone_topic,"Some text below the original reads:"
+skald_runestone_topic,"Some text, hidden below the original:"
 lore_blackforest_skald_01,"This forest, dark and mysterious.
 
 Under a night's full moon are its denizens stirred."
@@ -8,7 +8,13 @@ lore_blackforest_skald_02,"In the night they went,
 in studded corslets,
 their shields glistened
 in the waning moon."
+lore_blackforest_skald_03,"Heed these words of Taliesin, mead-brewer.
+
+To ward against corrupted blood
+mix char and honey with flesh of Neck.
+Seal with the light of the forest."
 lore_boars_skald_01,"The boar in these lands provide many gifts. Make of them weapons and tools to bend the world to your whim."
+lore_boars_skald_02,"If you would seek to make the animals of this land your companions, offering them a secure grazing field is often the best first step."
 lore_drake_skald_01,"Beware the Drake's breath. It inflicts a chill that no hearthfire can cure."
 lore_draugr_skald_01,"The draugr, with their hel-blár skin and age-worn armor are shackled to the places of their deaths, damned revenants seeking to drive away those foolish enough to venture close."
 lore_draugr_skald_02,"Beware those long dead that roam their barrows once more. These shadows of men called Draugr wield their weapons with inhuman ferocity.
@@ -17,25 +23,27 @@ Tread swiftly in this place."
 lore_greydwarfs_skald_01,"The forest of the Old One births greydwarfs under cover of night to purge those that would seek to destroy it.
 
 If you would bring harm to this place, then make sure you seek shelter when night falls."
-lore_meadows_skald_01,"The great tree Yggdrasil, the center of existence, connects all.
+lore_greydwarfs_skald_02,"The guardians of this place are fierce, but their flesh is weak to flame. Take the sap that is in abundance here and create from it arrows of fire."
+lore_meadows_skald_01,"Look to the sky and see the great tree Yggdrasil. Its branches span the void, bridging the planes of all existence.
 
-Within it lives the guardian serpent Níðhöggr and the great stags Dáinn, Dvalinn, Duneyrr and Duraþrór."
+Within Yggdrasil lives the guardian serpent Níðhöggr and the great stags Dáinn, Dvalinn, Duneyrr and Duraþrór."
 lore_meadows_skald_02,"Out of Ymir's flesh was fashioned the earth,
 And the mountains were made of his bones;
 The sky from the frost cold giant's skull, 
 And the ocean out of his blood."
-lore_meadows_skald_03,"On the first of the humans Ask and Embla:
+lore_meadows_skald_03,"On the subject first of the humans Ask and Embla:
 Spirit they possessed not, sense they had not,
 blood nor motive powers, nor goodly colour.
 Spirit gave Odin, sense gave Hœnir,
 blood gave Lodur, and goodly colour"
+lore_meadows_skald_04,"Strong warriors know the power of the mushrooms that grow red; wise warriors combine them to stay always better fed."
 lore_mountains_skald_01,"The mountain's winds are as deadly as its stalkers of the night. A mead of thistle and honey can help temper one's constitution against such threats."
 lore_plains_skald_01,"Be wary the creatures that still roam these lands, as they are the poisoned children of the Forsaken One."
 lore_plains_skald_02,"And the king bound his unknown guest and tortured him, putting him between two fires for eight nights without succour.
 
-On the eighth day the guest revealed himself as Odin and that the king shall be cursed.
+On the eighth day the guest revealed himself as Odin and cursed the king.
 
-Having learned that he is undone, the king rose quickly, but the sword which he had lain upon his knee slipped and fell hilt down, such that he was impaled upon it.
+Having learned this, the king rose quickly, but the sword which he had lain upon his knee slipped and fell and he was impaled upon it.
  
 Odin vanished."
 lore_surtlings_skald_01,"Surtr moves from the south 
@@ -54,13 +62,18 @@ Surt and the gracious gods;
 A hundred miles each way does it measure,
 And so are its boundaries set.'"
 lore_swamps_skald_01,"In these swamps the waters gnash at your feet, the fog follows you between withered trees, and ancient warriors walk once more."
+lore_swamps_skald_02,"Beware the creatures that dwell in the shallows. I have been bitten and fear I won't see the next sun.
+My name is Erik. Tell my family of my deeds in Valheim."
 lore_wraith_skald_01,"These spectres of disgraced warriors only dare show themselves when the sun goes down.
 
 Swing your silvered sword and release them from their purgatory."
 lore_eikthyr_skald_01,"Be wary of the great forked horns of Eikþyr.
 
 Their power can create rivers and shatter mountains."
+lore_eikthyr_skald_03,"So Eikþyr as Beli, will the antler be their undoing."
 lore_elder_skald_01,"The Old One's favored children carry the key."
-lore_bonemass_skald_01,"Those stirred few that are withered and rotting desire eternal rest."
+lore_elder_skald_02,"The roots of the forest run deep and and answer to their one true king."
+lore_bonemass_skald_01,"The withered remains of the damned desire eternal rest."
+lore_bonemass_skald_02,"This beast is without body. Quiver your arrows and shatter its form."
 lore_moder_skald_01,"Wary are her spawn, and vigilant is she."
 lore_yagluth_skald_01,"His poisoned children worship his tainted soul."

@@ -70,6 +70,96 @@
     "off": []
   },
   {
+    "text": "$skald_dream_15",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_16",
+    "on": ["defeated_eikthyr"],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_17",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_18",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_19",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_20",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_21",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_22",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_23",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_24",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_25",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_26",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_27",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_28",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_29",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_30",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_31",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_32",
+    "on": [],
+    "off": []
+  },
+  {
     "text": "$skald_dream_eikthyr_01",
     "on": [],
     "off": ["defeated_eikthyr"]
