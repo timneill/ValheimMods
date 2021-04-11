@@ -2,6 +2,7 @@
   "RuneStone_BlackForest": [
     "$skald_lore_blackforest_01",
     "$skald_lore_blackforest_02",
+    "$skald_lore_blackforest_03",
     "$skald_lore_blackforest_vegvisir",
     "$skald_lore_potions_poison",
     "$skald_lore_potions_tasty",
@@ -12,10 +13,12 @@
     "$skald_lore_boars_02"
   ],
   "RuneStone_Drake": [
-    "$skald_lore_drake_01"
+    "$skald_lore_drake_01",
+    "$skald_lore_drake_02"
   ],
   "RuneStone_Draugr": [
-    "$skald_lore_draugr_01"
+    "$skald_lore_draugr_01",
+    "$skald_lore_draugr_02"
   ],
   "RuneStone_Greydwarfs": [
     "$skald_lore_greydwarfs_01",
@@ -33,6 +36,10 @@
   "RuneStone_Mountains": [
     "$skald_lore_mountains_01",
     "$skald_lore_mountains_02",
+    "$skald_lore_mountains_03",
+    "$skald_lore_mountains_04",
+    "$skald_lore_mountains_05",
+    "$skald_lore_mountains_06",
     "$skald_lore_mountains_vegvisir",
     "$skald_lore_potions_stamina",
     "$skald_lore_potions_frost",
@@ -41,6 +48,8 @@
   "RuneStone_Plains": [
     "$skald_lore_plains_01",
     "$skald_lore_plains_02",
+    "$skald_lore_plains_03",
+    "$skald_lore_plains_04",
     "$skald_lore_plains_vegvisir",
     "$skald_lore_potions_stamina",
     "$skald_lore_potions_fire",
@@ -78,9 +87,11 @@
     "$skald_lore_bonemass_02"
   ],
   "RuneStone_DragonQueen": [
-    "$skald_lore_moder_01"
+    "$skald_lore_moder_01",
+    "$skald_lore_moder_02"
   ],
   "RuneTablet_GoblinKing": [
-    "$skald_lore_yagluth_01"
+    "$skald_lore_yagluth_01",
+    "$skald_lore_yagluth_02"
   ]
 }

@@ -8,11 +8,17 @@ skald_lore_blackforest_02,"In the night they went,
 in studded corslets,
 their shields glistened
 in the waning moon."
+skald_lore_blackforest_03,"Seek out the trader in these forests. A slight figure with powerful items, protected by an aura of magic."
 skald_lore_blackforest_vegvisir,"To defeat this land's Forsaken, seek out the guide beneath the ground where the dead lie."
 skald_lore_boars_01,"The boar in these lands provide many gifts. Make of them weapons and tools to bend the world to your whim."
 skald_lore_boars_02,"If you would seek to make the animals of this land your companions, offering them a secure grazing field is often the best first step."
 skald_lore_drake_01,"Beware the Drake's breath. It inflicts a chill that no hearthfire can cure."
-skald_lore_draugr_01,"The draugr, with their hel-blár skin and age-worn armor are shackled to the places of their deaths, damned revenants seeking to drive away those foolish enough to venture close."
+skald_lore_drake_02,"If you stumble upon a nest in these mountains, be prepared to meet its guardians.
+
+A nest's egg is heavy but carries within it the progeny of the brood mother."
+skald_lore_draugr_01,"The draugr, skin hel-blár and armor decaying are shackled to the places of their deaths, damned revenants seeking to drive away those foolish enough to venture close.
+
+Traveler, make your stay in this place short."
 skald_lore_draugr_02,"Beware those long dead that roam their barrows once more. These shadows of men called Draugr wield their weapons with inhuman ferocity.
 
 Tread swiftly in this place."
@@ -31,10 +37,26 @@ skald_lore_meadows_03,"On the subject first of the humans Ask and Embla:
 Spirit they possessed not, sense they had not,
 blood nor motive powers, nor goodly colour.
 Spirit gave Odin, sense gave Hœnir,
-blood gave Lodur, and goodly colour"
+blood gave Lodur, and goodly colour."
 skald_lore_meadows_04,"Strong warriors know the power of the mushrooms that grow red; wise warriors combine them to stay always better fed."
 skald_lore_mountains_01,"The mountain's winds are as deadly as its stalkers of the night. A mead of thistle and honey can help temper one's constitution against such threats."
 skald_lore_mountains_02,"The tears of the mother are said to hold great power, greater even for those strong enough to weather the mountains' blizzards."
+skald_lore_mountains_03,"Traveler, if you see this runestone then be warned of the stone men.
+
+They live beneath your boots and are stirred by intruders.
+
+If you see one in these mountains, then I bid you seek refuge far from here."
+skald_lore_mountains_04,"The most fearsome creatures in these mountains hunt at night.
+
+When the moon rises, so do they."
+skald_lore_mountains_05,"In Odin's name I have tracked a Forsaken here.
+I now rest by a fire and will continue in the morning.
+
+Wolves howl outside, but I can only see shadows of men on the mountainside.
+
+Should I fall tomorrow, my name is Erik."
+skald_lore_mountains_06,"Wolves take kindly to the hand of people.
+A hunter without need for hunt is quickly subdued."
 skald_lore_mountains_vegvisir,"To defeat this land's Forsaken, seek out the guide within long-dead stone battlements."
 skald_lore_potions_poison,"Heed these words of Taliesin, mead-brewer.
 
@@ -76,7 +98,7 @@ skald_lore_potions_healingmed,"Heed these words of Taliesin, mead-brewer.
 To cure injury
 sweeten a mixture of blood and berry.
 Finalize with flower of the meadow."
-skald_lore_plains_01,"Be wary the creatures that still roam these lands, as they are the poisoned children of the Forsaken One."
+skald_lore_plains_01,"Be wary the creatures that still roam these lands, as they are the poisoned children of the Forsaken king."
 skald_lore_plains_02,"And the king bound his unknown guest and tortured him, putting him between two fires for eight nights without succour.
 
 On the eighth day the guest revealed himself as Odin and cursed the king.
@@ -84,6 +106,10 @@ On the eighth day the guest revealed himself as Odin and cursed the king.
 Having learned this, the king rose quickly, but the sword which he had lain upon his knee slipped and fell and he was impaled upon it.
  
 Odin vanished."
+skald_lore_plains_03,"Tread softly near the great beasts that graze upon the plain, but remember that it is not the size of a creature that makes it deadly."
+skald_lore_plains_04,"The poison has slowed and I have made it to the plains.
+Abominations twice the size of men guard the small refuges here, but my quiver is almost empty.
+My name is Erik."
 skald_lore_plains_vegvisir,"To defeat this realm's forsaken, seek out the guide in the dolmen with the archway."
 skald_lore_surtlings_01,"Surtr moves from the south 
 with the scathe of branches: 
@@ -119,4 +145,6 @@ skald_lore_elder_02,"The roots of the forest run deep and and answer to their on
 skald_lore_bonemass_01,"The withered remains of the damned desire eternal rest."
 skald_lore_bonemass_02,"This beast is without body. Quiver your arrows and shatter its form."
 skald_lore_moder_01,"Wary are her spawn, and vigilant is she."
+skald_lore_moder_02,"Even the dragon-mother cannot remain in the skies forever."
 skald_lore_yagluth_01,"His poisoned children worship his tainted soul."
+skald_lore_yagluth_02,"Stone resists stone as stone destroys bone."
