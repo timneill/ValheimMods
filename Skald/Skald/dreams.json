@@ -160,6 +160,36 @@
     "off": []
   },
   {
+    "text": "$skald_dream_33",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_event_eikthyr",
+    "on": [],
+    "off": ["defeated_eikthyr"]
+  },
+  {
+    "text": "$skald_dream_event_gdking",
+    "on": ["defeated_eikthyr"],
+    "off": ["defeated_gdking"]
+  },
+  {
+    "text": "$skald_dream_event_bonemass",
+    "on": ["defeated_eikthyr", "defeated_gdking"],
+    "off": ["defeated_bonemass"]
+  },
+  {
+    "text": "$skald_dream_event_moder",
+    "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass"],
+    "off": ["defeated_moder"]
+  },
+  {
+    "text": "$skald_dream_event_yagluth",
+    "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder"],
+    "off": ["defeated_yagluth"]
+  },
+  {
     "text": "$skald_dream_eikthyr_01",
     "on": [],
     "off": ["defeated_eikthyr"]
@@ -186,6 +216,11 @@
   },
   {
     "text": "$skald_dream_elder_defeated_01",
+    "on": ["defeated_gdking"],
+    "off": []
+  },
+  {
+    "text": "$skald_dream_elder_defeated_02",
     "on": ["defeated_gdking"],
     "off": []
   },
