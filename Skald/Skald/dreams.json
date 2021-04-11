@@ -95,9 +95,19 @@
     "off": ["defeated_gdking"]
   },
   {
+    "text": "$skald_dream_elder_defeated_01",
+    "on": ["defeated_gdking"],
+    "off": []
+  },
+  {
     "text": "$skald_dream_bonemass_01",
     "on": ["defeated_eikthyr", "defeated_gdking"],
     "off": ["defeated_bonemass"]
+  },
+  {
+    "text": "$skald_dream_bonemass_defeated_01",
+    "on": ["defeated_bonemass"],
+    "off": []
   },
   {
     "text": "$skald_dream_moder_01",
