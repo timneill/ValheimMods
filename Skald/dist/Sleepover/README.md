@@ -22,7 +22,7 @@ Known issues/quirks
 
 Example
 -------
-![Sleep in unclaimed beds](https://github.com/timneill/ValheimMods/tree/main/Skald/dist/Sleepover/bed-01.png?raw=true)
+![Sleep in unclaimed beds](https://github.com/timneill/ValheimMods/tree/main/Skald/dist/Sleepover/bed-01.png)
 
 Config
 ------
