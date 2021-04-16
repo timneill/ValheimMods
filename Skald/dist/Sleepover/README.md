@@ -4,6 +4,7 @@ Sleepover - Total Bed Control
 This mod adds toggleable options for each of the checks for bed use/sleeping, as well as a couple of small useful additions such as ignoring spawnpoint creation and allowing people to bunk together.
 
 Ability to disable/enable:
+
 * Wet check
 * Fire check
 * Walls/Roof check
@@ -22,7 +23,7 @@ Known issues/quirks
 
 Example
 -------
-![Sleep in unclaimed beds](https://github.com/timneill/ValheimMods/tree/main/Skald/dist/Sleepover/bed-01.png)
+![Sleep in unclaimed beds - https://github.com/timneill/ValheimMods/tree/main/Skald/dist/Sleepover/bed-01.png](https://github.com/timneill/ValheimMods/tree/main/Skald/dist/Sleepover/bed-01.png)
 
 Config
 ------
