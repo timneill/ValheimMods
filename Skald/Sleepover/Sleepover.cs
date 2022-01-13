@@ -9,12 +9,11 @@ using UnityEngine;
 namespace Sleepover
 {
     [BepInPlugin(PLUGIN_ID, PLUGIN_NAME, PLUGIN_VERSION)]
-    [BepInDependency(ValheimLib.ValheimLib.ModGuid)]
     public class SleepoverMod : BaseUnityPlugin
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.sleepover";
         const string PLUGIN_NAME = "Sleepover";
-        const string PLUGIN_VERSION = "1.0.0";
+        const string PLUGIN_VERSION = "1.0.1";
         const string ALT_FUNC_KEY = "left shift";
 
         private readonly Harmony harmony = new Harmony(PLUGIN_ID);
