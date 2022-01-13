@@ -148,6 +148,38 @@ skald_lore_moder_01,"Wary are her spawn, and vigilant is she."
 skald_lore_moder_02,"Even the dragon-mother cannot remain in the skies forever."
 skald_lore_yagluth_01,"His poisoned children worship his tainted soul."
 skald_lore_yagluth_02,"Stone resists stone as stone destroys bone."
+skald_lore_beastmaster_wolf,"Heed these words of the Beastmaster Eyvindr.
+
+If you are to make these predators your allies, offer to them only fresh kills from your hand.
+They sense tainted flesh and will disavow themselves of your presence."
+skald_lore_beastmaster_boar,"Heed these words of the Beastmaster Eyvindr.
+
+If you are to befriend the boar of these meadows, try sweet berries, root vegetables, or mushroom.
+That which grows within caverns is not suitable."
+skald_lore_beastmaster_lox,"Heed these words of the Beastmaster Eyvindr.
+
+Too many have fallen trying to befriend the immense beasts of burden on these plains.
+Be sure to use only that which grows in their surrounds - grains and berries."
+skald_lore_beastmaster_leviathan,"Heed these words of the Beastmaster Eyvindr.
+
+In the oceans, one can find living islands that appear on no map.
+Come to them with a strong pick and harvest for yourself the barnacles that grow there."
+skald_lore_beastmaster_leech,"Heed these words of the Beastmaster Eyvindr.
+
+The worms here in these swamps are cursed with an eternal thirst for blood.
+Deny them by drawing them onto land where they cannot breathe."
+skald_lore_beastmaster_deathsquito,"Heed these words of the Beastmaster Eyvindr.
+
+Be wary, traveler, of the insects that roam these plains freely.
+Their attacks are severe and life-threatening, but their bodies weak and vulnerable when resisted."
+skald_lore_beastmaster_serpent,"Heed these words of the Beastmaster Eyvindr.
+
+There are tales of great and deadly serpents that dwell beneath the ocean waves.
+Should you see one, then by the gods may the wind be at your back."
+skald_lore_beastmaster_neck,"Heed these words of the Beastmaster Eyvindr.
+
+The neck is a small and rather harmless creature.
+However it's flesh is sustaining and can be used to resist many ailments."
 skald_dream_01,"You dream of a great ship made of nails sailing on a sea of blood towards the battlefield Vígríðr. 
 
 Its cargo is a horde creatures on their way to do battle with the gods themselves."
@@ -241,7 +273,6 @@ For hours, he tells you tales of gods and war."
 skald_dream_27,"You are handed the Bragarfull.
 
 The fire is warm but the vows are solemn."
-
 skald_dream_eikthyr_01,"You are stalked by a shadow in the shape of a great stag.
 
 His glowing eyes pierce the darkness and his antlers glow with energy."
@@ -266,6 +297,17 @@ skald_dream_33,"A woman crouches on the ground in front of you, her face obscure
 She carefully plucks a chip of wood from the ground and presents it to you.
 
 Jēra ᛃ"
+skald_dream_34,"Burning embers dance skyward as you stare into the flames of your fire.
+
+Somewhere, a great howl rings out and your hair stands on end."
+skald_dream_35,"You dream of of a place of ashes and sulfur, of impossible heat and a sky darkened by soot.
+
+Surtr stands before you, gesturing to for you to approach.
+
+His body shatters into countless fragments."
+skald_dream_36,"You dream of a place so cold that no fire can warm it.
+
+Great pieces of ice batter against your ship's hull and the wind threatens to freeze your joints stiff."
 skald_dream_event_eikthyr,"Hundreds of angry boar circle your house.
 
 They fear no flame.

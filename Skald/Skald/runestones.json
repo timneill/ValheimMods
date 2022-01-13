@@ -1,96 +1,111 @@
 {
   "RuneStone_BlackForest": [
-    "$skald_lore_blackforest_01",
-    "$skald_lore_blackforest_02",
-    "$skald_lore_blackforest_03",
-    "$skald_lore_blackforest_vegvisir",
-    "$skald_lore_potions_poison",
-    "$skald_lore_potions_tasty",
-    "$skald_lore_potions_healing"
+    "skald_lore_blackforest_01",
+    "skald_lore_blackforest_02",
+    "skald_lore_blackforest_03",
+    "skald_lore_blackforest_vegvisir",
+    "skald_lore_potions_poison",
+    "skald_lore_potions_tasty",
+    "skald_lore_potions_healing",
+    "skald_lore_beastmaster_leviathan",
+    "skald_lore_beastmaster_serpent"
   ],
   "RuneStone_Boars": [
-    "$skald_lore_boars_01",
-    "$skald_lore_boars_02"
+    "skald_lore_boars_01",
+    "skald_lore_boars_02",
+    "skald_lore_beastmaster_boar"
   ],
   "RuneStone_Drake": [
-    "$skald_lore_drake_01",
-    "$skald_lore_drake_02"
+    "skald_lore_drake_01",
+    "skald_lore_drake_02"
   ],
   "RuneStone_Draugr": [
-    "$skald_lore_draugr_01",
-    "$skald_lore_draugr_02"
+    "skald_lore_draugr_01",
+    "skald_lore_draugr_02"
   ],
   "RuneStone_Greydwarfs": [
-    "$skald_lore_greydwarfs_01",
-    "$skald_lore_greydwarfs_02"
+    "skald_lore_greydwarfs_01",
+    "skald_lore_greydwarfs_02"
   ],
   "RuneStone_Meadows": [
-    "$skald_lore_meadows_01",
-    "$skald_lore_meadows_02",
-    "$skald_lore_meadows_03",
-    "$skald_lore_meadows_04",
-    "$skald_lore_potions_stamina",
-    "$skald_lore_potions_tasty",
-    "$skald_lore_potions_healing"
+    "skald_lore_meadows_01",
+    "skald_lore_meadows_02",
+    "skald_lore_meadows_03",
+    "skald_lore_meadows_04",
+    "skald_lore_potions_stamina",
+    "skald_lore_potions_tasty",
+    "skald_lore_potions_healing",
+    "skald_lore_beastmaster_boar",
+    "skald_lore_beastmaster_leviathan",
+    "skald_lore_beastmaster_serpent",
+    "skald_lore_beastmaster_neck"
   ],
   "RuneStone_Mountains": [
-    "$skald_lore_mountains_01",
-    "$skald_lore_mountains_02",
-    "$skald_lore_mountains_03",
-    "$skald_lore_mountains_04",
-    "$skald_lore_mountains_05",
-    "$skald_lore_mountains_06",
-    "$skald_lore_mountains_vegvisir",
-    "$skald_lore_potions_stamina",
-    "$skald_lore_potions_frost",
-    "$skald_lore_potions_healingmed"
+    "skald_lore_mountains_01",
+    "skald_lore_mountains_02",
+    "skald_lore_mountains_03",
+    "skald_lore_mountains_04",
+    "skald_lore_mountains_05",
+    "skald_lore_mountains_06",
+    "skald_lore_mountains_vegvisir",
+    "skald_lore_potions_stamina",
+    "skald_lore_potions_frost",
+    "skald_lore_potions_healingmed",
+    "skald_lore_beastmaster_wolf"
   ],
   "RuneStone_Plains": [
-    "$skald_lore_plains_01",
-    "$skald_lore_plains_02",
-    "$skald_lore_plains_03",
-    "$skald_lore_plains_04",
-    "$skald_lore_plains_vegvisir",
-    "$skald_lore_potions_stamina",
-    "$skald_lore_potions_fire",
-    "$skald_lore_potions_healingmed",
-    "$skald_lore_potions_staminamed"
+    "skald_lore_plains_01",
+    "skald_lore_plains_02",
+    "skald_lore_plains_03",
+    "skald_lore_plains_04",
+    "skald_lore_plains_vegvisir",
+    "skald_lore_potions_stamina",
+    "skald_lore_potions_fire",
+    "skald_lore_potions_healingmed",
+    "skald_lore_potions_staminamed",
+    "skald_lore_beastmaster_lox",
+    "skald_lore_beastmaster_leviathan",
+    "skald_lore_beastmaster_deathsquito",
+    "skald_lore_beastmaster_serpent"
   ],
   "RuneStone_Surtling": [
-    "$skald_lore_surtlings_01",
-    "$skald_lore_surtlings_02"
+    "skald_lore_surtlings_01",
+    "skald_lore_surtlings_02"
   ],
   "RuneStone_Swamps": [
-    "$skald_lore_swamps_01",
-    "$skald_lore_swamps_02",
-    "$skald_lore_swamps_03",
-    "$skald_lore_swamps_vegvisir",
-    "$skald_lore_potions_poison",
-    "$skald_lore_potions_stamina",
-    "$skald_lore_potions_frost",
-    "$skald_lore_potions_healingmed"
+    "skald_lore_swamps_01",
+    "skald_lore_swamps_02",
+    "skald_lore_swamps_03",
+    "skald_lore_swamps_vegvisir",
+    "skald_lore_potions_poison",
+    "skald_lore_potions_stamina",
+    "skald_lore_potions_frost",
+    "skald_lore_potions_healingmed",
+    "skald_lore_beastmaster_leviathan",
+    "skald_lore_beastmaster_leech",
+    "skald_lore_beastmaster_serpent"
   ],
   "RuneTablet_Wraith": [
-    "$skald_lore_wraith_01"
+    "skald_lore_wraith_01"
   ],
   "RuneTablet_Eikthyr": [
-    "$skald_lore_eikthyr_01",
-    "$skald_lore_eikthyr_02"
+    "skald_lore_eikthyr_01",
+    "skald_lore_eikthyr_02"
   ],
   "RuneStone_GDKing": [
-    "$skald_lore_elder_01",
-    "$skald_lore_elder_02"
+    "skald_lore_elder_01",
+    "skald_lore_elder_02"
   ],
   "RuneStone_Bonemass": [
-    "$skald_lore_bonemass_01",
-    "$skald_lore_bonemass_02"
+    "skald_lore_bonemass_01",
+    "skald_lore_bonemass_02"
   ],
   "RuneStone_DragonQueen": [
-    "$skald_lore_moder_01",
-    "$skald_lore_moder_02"
+    "skald_lore_moder_01",
+    "skald_lore_moder_02"
   ],
   "RuneTablet_GoblinKing": [
-    "$skald_lore_yagluth_01",
-    "$skald_lore_yagluth_02"
+    "skald_lore_yagluth_01",
+    "skald_lore_yagluth_02"
   ]
 }

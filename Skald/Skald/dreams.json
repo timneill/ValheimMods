@@ -1,251 +1,266 @@
 [
   {
-    "text": "$skald_dream_01",
+    "text": "skald_dream_01",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_02",
+    "text": "skald_dream_02",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_03",
+    "text": "skald_dream_03",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_04",
+    "text": "skald_dream_04",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_05",
+    "text": "skald_dream_05",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_06",
+    "text": "skald_dream_06",
     "on": ["KilledTroll"],
     "off": []
   },
   {
-    "text": "$skald_dream_07",
+    "text": "skald_dream_07",
     "on": ["KilledTroll"],
     "off": ["defeated_gdking"]
   },
   {
-    "text": "$skald_dream_08",
+    "text": "skald_dream_08",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_09",
+    "text": "skald_dream_09",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_10",
+    "text": "skald_dream_10",
     "on": ["killed_surtling"],
     "off": []
   },
   {
-    "text": "$skald_dream_11",
+    "text": "skald_dream_11",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_12",
+    "text": "skald_dream_12",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_13",
+    "text": "skald_dream_13",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_14",
+    "text": "skald_dream_14",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_15",
+    "text": "skald_dream_15",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_16",
+    "text": "skald_dream_16",
     "on": ["defeated_eikthyr"],
     "off": []
   },
   {
-    "text": "$skald_dream_17",
+    "text": "skald_dream_17",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_18",
+    "text": "skald_dream_18",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_19",
+    "text": "skald_dream_19",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_20",
+    "text": "skald_dream_20",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_21",
+    "text": "skald_dream_21",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_22",
+    "text": "skald_dream_22",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_23",
+    "text": "skald_dream_23",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_24",
+    "text": "skald_dream_24",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_25",
+    "text": "skald_dream_25",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_26",
+    "text": "skald_dream_26",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_27",
+    "text": "skald_dream_27",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_28",
+    "text": "skald_dream_28",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_29",
+    "text": "skald_dream_29",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_30",
+    "text": "skald_dream_30",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_31",
+    "text": "skald_dream_31",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_32",
+    "text": "skald_dream_32",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_33",
+    "text": "skald_dream_33",
     "on": [],
     "off": []
   },
   {
-    "text": "$skald_dream_event_eikthyr",
+    "text": "skald_dream_34",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "skald_dream_35",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "skald_dream_36",
+    "on": [],
+    "off": []
+  },
+  {
+    "text": "skald_dream_event_eikthyr",
     "on": [],
     "off": ["defeated_eikthyr"]
   },
   {
-    "text": "$skald_dream_event_gdking",
+    "text": "skald_dream_event_gdking",
     "on": ["defeated_eikthyr"],
     "off": ["defeated_gdking"]
   },
   {
-    "text": "$skald_dream_event_bonemass",
+    "text": "skald_dream_event_bonemass",
     "on": ["defeated_eikthyr", "defeated_gdking"],
     "off": ["defeated_bonemass"]
   },
   {
-    "text": "$skald_dream_event_moder",
+    "text": "skald_dream_event_moder",
     "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass"],
     "off": ["defeated_moder"]
   },
   {
-    "text": "$skald_dream_event_yagluth",
+    "text": "skald_dream_event_yagluth",
     "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder"],
     "off": ["defeated_yagluth"]
   },
   {
-    "text": "$skald_dream_eikthyr_01",
+    "text": "skald_dream_eikthyr_01",
     "on": [],
     "off": ["defeated_eikthyr"]
   },
   {
-    "text": "$skald_dream_eikthyr_defeated_01",
+    "text": "skald_dream_eikthyr_defeated_01",
     "on": ["defeated_eikthyr"],
     "off": []
   },
   {
-    "text": "$skald_dream_eikthyr_defeated_02",
+    "text": "skald_dream_eikthyr_defeated_02",
     "on": ["defeated_eikthyr"],
     "off": []
   },
   {
-    "text": "$skald_dream_elder_01",
-    "on": ["defeated_eikthyr"],
-    "off": ["defeated_gdking"]
-  },
-  {
-    "text": "$skald_dream_elder_02",
+    "text": "skald_dream_elder_01",
     "on": ["defeated_eikthyr"],
     "off": ["defeated_gdking"]
   },
   {
-    "text": "$skald_dream_elder_defeated_01",
+    "text": "skald_dream_elder_02",
+    "on": ["defeated_eikthyr"],
+    "off": ["defeated_gdking"]
+  },
+  {
+    "text": "skald_dream_elder_defeated_01",
     "on": ["defeated_gdking"],
     "off": []
   },
   {
-    "text": "$skald_dream_elder_defeated_02",
+    "text": "skald_dream_elder_defeated_02",
     "on": ["defeated_gdking"],
     "off": []
   },
   {
-    "text": "$skald_dream_bonemass_01",
+    "text": "skald_dream_bonemass_01",
     "on": ["defeated_eikthyr", "defeated_gdking"],
     "off": ["defeated_bonemass"]
   },
   {
-    "text": "$skald_dream_bonemass_defeated_01",
+    "text": "skald_dream_bonemass_defeated_01",
     "on": ["defeated_bonemass"],
     "off": []
   },
   {
-    "text": "$skald_dream_moder_01",
+    "text": "skald_dream_moder_01",
     "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass"],
     "off": ["defeated_moder"]
   },
   {
-    "text": "$skald_dream_yagluth_01",
+    "text": "skald_dream_yagluth_01",
     "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder"],
     "off": ["defeated_goblinking"]
   },
   {
-    "text": "$skald_dream_defeated_all_01",
+    "text": "skald_dream_defeated_all_01",
     "on": ["defeated_eikthyr", "defeated_gdking", "defeated_bonemass", "defeated_moder", "defeated_goblinking"],
     "off": []
   }

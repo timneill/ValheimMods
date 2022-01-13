@@ -3,6 +3,7 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using fastJSON;
 using HarmonyLib;
+using Jotunn.Entities;
 using Random = System.Random;
 using System.Collections.Generic;
 using System.IO;
@@ -12,18 +13,21 @@ using UnityEngine;
 namespace Skald
 {
     [BepInPlugin(PLUGIN_ID, PLUGIN_NAME, PLUGIN_VERSION)]
-    [BepInDependency(ValheimLib.ValheimLib.ModGuid)]
     public class SkaldMod : BaseUnityPlugin
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.skald";
         const string PLUGIN_NAME = "Skald";
         const string PLUGIN_VERSION = "1.0.0";
 
+        const string LANGUAGE_FILE = @"\localization.language";
         const string DREAM_TEXTS = @"\dreams.json";
         const string RUNESTONE_TEXTS = @"\runestones.json";
 
+        private readonly Harmony harmony = new Harmony(PLUGIN_ID);
+
         protected static List<DreamTexts.DreamText> m_SkaldDreamTexts = new List<DreamTexts.DreamText>();
         protected static Dictionary<string, List<RuneStone.RandomRuneText>> m_SkaldRunestoneTexts = new Dictionary<string, List<RuneStone.RandomRuneText>>();
+        protected static CustomLocalization m_localization = new CustomLocalization();
 
         private static ConfigEntry<bool> modEnabled;
         private static ConfigEntry<string> readMoreModifierKey;
@@ -31,6 +35,7 @@ namespace Skald
 
         private static SkaldMod self;
         private static Assembly assembly;
+
         private static readonly Random rng = new Random();
 
         internal void Awake()
@@ -51,15 +56,23 @@ namespace Skald
             // Recommended way to get current Assembly
             assembly = typeof(SkaldMod).Assembly;
 
-            Harmony.CreateAndPatchAll(assembly, PLUGIN_ID);
+            harmony.PatchAll(assembly);
             InitializeSkaldTexts();
 
             Logger.Log(LogLevel.Info, "Skald initialized.");
         }
 
+        void OnDestroy()
+        {
+            harmony.UnpatchSelf();
+        }
+
         private void InitializeSkaldTexts()
         {
             string libDir = Path.GetDirectoryName(assembly.Location);
+
+            // Loading language file manually
+            m_localization.AddLanguageFile(File.ReadAllText(libDir + LANGUAGE_FILE));
 
             Logger.Log(LogLevel.Info, "Loading dream texts...");
             LoadDreamTexts(libDir);
@@ -79,7 +92,7 @@ namespace Skald
             {
                 m_SkaldDreamTexts.Add(new DreamTexts.DreamText()
                 {
-                    m_text = dreamData.text,
+                    m_text = m_localization.TryTranslate(dreamData.text),
                     m_trueKeys = dreamData.on,
                     m_falseKeys = dreamData.off
                 });
@@ -110,7 +123,7 @@ namespace Skald
 
             foreach (string runestoneText in runestoneTextData)
             {
-                mappedTexts.Add(new RuneStone.RandomRuneText { m_text = runestoneText });
+                mappedTexts.Add(new RuneStone.RandomRuneText { m_text = m_localization.TryTranslate(runestoneText) });
             }
 
             return mappedTexts;
@@ -167,7 +180,7 @@ namespace Skald
 
                 RuneStone.RandomRuneText randomText = m_SkaldRunestoneTexts[__instance.name][rng.Next(m_SkaldRunestoneTexts[__instance.name].Count)];
 
-                TextViewer.instance.ShowText(TextViewer.Style.Rune, "$skald_runestone_topic", randomText.m_text, autoHide: true);
+                TextViewer.instance.ShowText(TextViewer.Style.Rune, m_localization.TryTranslate("skald_runestone_topic"), randomText.m_text, autoHide: true);
 
                 return false;
             }
@@ -178,7 +191,7 @@ namespace Skald
             {
                 if (m_SkaldRunestoneTexts.ContainsKey(__instance.name))
                 {
-                    return (__result ?? "") + Localization.instance.Localize($"\n[<color=yellow><b>{readMoreModifierKey.Value} + $KEY_Use</b></color>] $skald_piece_rune_read_more");
+                    return (__result ?? "") + Localization.instance.Localize($"\n[<color=yellow><b>{readMoreModifierKey.Value} + $KEY_Use</b></color>] ") + m_localization.TryTranslate("skald_piece_rune_read_more");
                 }
 
                 return __result;
