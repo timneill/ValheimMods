@@ -13,7 +13,7 @@ namespace Sleepover
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.sleepover";
         const string PLUGIN_NAME = "Sleepover";
-        const string PLUGIN_VERSION = "1.0.1";
+        const string PLUGIN_VERSION = "1.0.2";
         const string ALT_FUNC_KEY = "left shift";
 
         private readonly Harmony harmony = new Harmony(PLUGIN_ID);
@@ -258,7 +258,7 @@ namespace Sleepover
                             return false;
                         }
 
-                        human.AttachStart(__instance.m_spawnPoint, true, true, "attach_bed", new Vector3(0f, 0.5f, 0f));
+                        human.AttachStart(__instance.m_spawnPoint, human.gameObject, true, true, false, "attach_bed", new Vector3(0f, 0.5f, 0f));
                         __result = false;
 
                         return false;

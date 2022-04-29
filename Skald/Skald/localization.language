@@ -57,6 +57,11 @@ Wolves howl outside, but I can only see shadows of men on the mountainside.
 Should I fall tomorrow, my name is Erik."
 skald_lore_mountains_06,"Wolves take kindly to the hand of people.
 A hunter without need for hunt is quickly subdued."
+skald_lore_mountains_07,"In the night I suffered an injury.
+I quickly made shelter in a nearby cave to escape the chill.
+Within, I was set upon by horrifying creatures, half-wolf, half-man.
+I now feel a fever within my blood.
+My name is Erik."
 skald_lore_mountains_vegvisir,"To defeat this land's Forsaken, seek out the guide within long-dead stone battlements."
 skald_lore_potions_poison,"Heed these words of Taliesin, mead-brewer.
 
@@ -152,10 +157,26 @@ skald_lore_beastmaster_wolf,"Heed these words of the Beastmaster Eyvindr.
 
 If you are to make these predators your allies, offer to them only fresh kills from your hand.
 They sense tainted flesh and will disavow themselves of your presence."
+skald_lore_beastmaster_cultist,"Heed these words of the Beastmaster Eyvindr.
+
+Within the caves here are wolves that hunt on two legs.
+Shuffle these abominations off this plane using a corrupting essence of your choosing."
+skald_lore_beastmaster_ulv,"Heed these words of the Beastmaster Eyvindr.
+
+Within the caves here dwell creatures that resemble savage, maddened hounds.
+Judge them lightly at your own peril and don't hesitate to end their torment."
+skald_lore_beastmaster_bat,"Heed these words of the Beastmaster Eyvindr.
+
+Within the caves fly small creatures of the night.
+Be away with them with a well placed flame."
 skald_lore_beastmaster_boar,"Heed these words of the Beastmaster Eyvindr.
 
 If you are to befriend the boar of these meadows, try sweet berries, root vegetables, or mushroom.
 That which grows within caverns is not suitable."
+skald_lore_beastmaster_deer,"Heed these words of the Beastmaster Eyvindr.
+
+Roaming these lands are the children of Eikþyr.
+They frighten easily, so take care to approach in silence."
 skald_lore_beastmaster_lox,"Heed these words of the Beastmaster Eyvindr.
 
 Too many have fallen trying to befriend the immense beasts of burden on these plains.
@@ -168,6 +189,10 @@ skald_lore_beastmaster_leech,"Heed these words of the Beastmaster Eyvindr.
 
 The worms here in these swamps are cursed with an eternal thirst for blood.
 Deny them by drawing them onto land where they cannot breathe."
+skald_lore_beastmaster_abomination,"Heed these words of the Beastmaster Eyvindr.
+
+There are things of wood that roam this the swamp that no words can describe.
+Approach only with extreme caution, a torch in hand. Or run."
 skald_lore_beastmaster_deathsquito,"Heed these words of the Beastmaster Eyvindr.
 
 Be wary, traveler, of the insects that roam these plains freely.
@@ -233,7 +258,7 @@ skald_dream_12,"In your dream, you are alerted to the sound of crunching, gnashi
 
 The world beneath your head shakes, but you find the source of neither the gnashing nor the trembling."
 skald_dream_13,"You dream of the cold.
-You had waiting for the sun to rise but the night streteched on.
+You had been waiting for the sun to rise but the night stretched on.
 It was freezing and dark.
 A sickly sweet scent arrives on the air.
 Somewhere inside you know it is poison, but you do not remember why."

@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.0.1
+-----
+* Added new texts for Swamp and Mountains changes
+* Added new texts for new recipes
+
+1.0.0
+-----
+* Update for Hearth and Home
+
 0.9.2
 -----
 * Consolidated language files into one file to fix bug with ValheimLib and Jotunn only loading the first file in a directory for a mod.

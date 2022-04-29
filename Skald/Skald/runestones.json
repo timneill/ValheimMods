@@ -36,9 +36,10 @@
     "skald_lore_potions_tasty",
     "skald_lore_potions_healing",
     "skald_lore_beastmaster_boar",
+    "skald_lore_beastmaster_deer",
+    "skald_lore_beastmaster_neck",
     "skald_lore_beastmaster_leviathan",
-    "skald_lore_beastmaster_serpent",
-    "skald_lore_beastmaster_neck"
+    "skald_lore_beastmaster_serpent"
   ],
   "RuneStone_Mountains": [
     "skald_lore_mountains_01",
@@ -47,11 +48,15 @@
     "skald_lore_mountains_04",
     "skald_lore_mountains_05",
     "skald_lore_mountains_06",
+    "skald_lore_mountains_07",
     "skald_lore_mountains_vegvisir",
     "skald_lore_potions_stamina",
     "skald_lore_potions_frost",
     "skald_lore_potions_healingmed",
-    "skald_lore_beastmaster_wolf"
+    "skald_lore_beastmaster_wolf",
+    "skald_lore_beastmaster_cultist",
+    "skald_lore_beastmaster_bat",
+    "skald_lore_beastmaster_ulv"
   ],
   "RuneStone_Plains": [
     "skald_lore_plains_01",
@@ -83,6 +88,7 @@
     "skald_lore_potions_healingmed",
     "skald_lore_beastmaster_leviathan",
     "skald_lore_beastmaster_leech",
+    "skald_lore_beastmaster_abomination",
     "skald_lore_beastmaster_serpent"
   ],
   "RuneTablet_Wraith": [
