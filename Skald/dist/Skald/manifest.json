@@ -1,6 +1,6 @@
 {
     "name": "Skald",
-    "version_number": "1.0.0",
+    "version_number": "1.0.1",
     "website_url": "https://github.com/timneill/ValheimMods/tree/main/Skald",
     "description": "Adds extra lore-friendly content to dreams and runestones.",
     "dependencies": [

@@ -13,8 +13,7 @@ namespace Sleepover
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.sleepover";
         const string PLUGIN_NAME = "Sleepover";
-        const string PLUGIN_VERSION = "1.0.2";
-        const string ALT_FUNC_KEY = "left shift";
+        const string PLUGIN_VERSION = "1.1.0";
 
         private readonly Harmony harmony = new Harmony(PLUGIN_ID);
 
@@ -26,6 +25,7 @@ namespace Sleepover
         private static ConfigEntry<bool> ignoreFire;
         private static ConfigEntry<bool> ignoreWet;
         private static ConfigEntry<bool> sleepWithoutSpawnpoint;
+        private static ConfigEntry<bool> multipleSpawnpointsPerBed;
         private static ConfigEntry<bool> sleepWithoutClaiming;
 
         private static SleepoverMod self;
@@ -38,14 +38,15 @@ namespace Sleepover
             self = this;
 
             modEnabled = Config.Bind<bool>("General", "Enabled", true, "Enable this mod");
-            enableMultipleBedfellows = Config.Bind<bool>("General", "Multiple bedfellows", true, "Allow multiple people to use this bed simultaneously.");
+            enableMultipleBedfellows = Config.Bind<bool>("General", "Multiple sleepers", true, "Allow multiple people to use this bed simultaneously. Not tested on public servers.");
             sleepAnyTime = Config.Bind<bool>("General", "Ignore time restrictions", true, "Sleep at any time of day, not just at night.");
             ignoreExposure = Config.Bind<bool>("General", "Ignore exposure restrictions", true, "Ignore restrictions for walls and a roof. Sleep under a starry sky.");
             ignoreEnemies = Config.Bind<bool>("General", "Ignore nearby enemies", true, "Enemies no longer prevent you from sleeping.");
             ignoreFire = Config.Bind<bool>("General", "Ignore fire requirement", true, "Sleep without a nearby fire.");
             ignoreWet = Config.Bind<bool>("General", "Ignore wet restrictions", true, "Sleep while wet.");
-            sleepWithoutSpawnpoint = Config.Bind<bool>("General", "Do not set spawnpoint", true, "Sleeping in a bed will not automatically set a spawn point.");
             sleepWithoutClaiming = Config.Bind<bool>("General", "Do not automatically claim beds", true, "Sleep without claiming a bed first.");
+            sleepWithoutSpawnpoint = Config.Bind<bool>("General", "Do not set spawnpoint", true, "Sleep without setting a spawnpoint first.");
+            multipleSpawnpointsPerBed = Config.Bind<bool>("General", "Multiple spawnpoints per bed", true, "Any number of players can use the same bed as a spawnpoint.");
 
             if (!modEnabled.Value)
             {
@@ -70,7 +71,7 @@ namespace Sleepover
             if (debugThis)
             {
                 self.Logger.Log(LogLevel.Info, val);
-            }  
+            }
         }
 
         [HarmonyPatch(typeof(Game))]
@@ -80,8 +81,13 @@ namespace Sleepover
             [HarmonyPatch(nameof(Game.UpdateSleeping))]
             public static bool UpdateSleeping(ref Game __instance)
             {
+                if (!modEnabled.Value)
+                {
+                    return true;
+                }
+
                 // Only patch game code if we are worrying about sleep time
-                if (!modEnabled.Value || !sleepAnyTime.Value)
+                if (!sleepAnyTime.Value)
                 {
                     return true;
                 }
@@ -99,12 +105,8 @@ namespace Sleepover
                         return false;
                     }
                 }
-                else if (!EnvMan.instance.IsTimeSkipping())
+                else if (!EnvMan.instance.IsTimeSkipping() && (EnvMan.instance.IsAfternoon() || EnvMan.instance.IsNight()) && __instance.EverybodyIsTryingToSleep())
                 {
-                    if (!__instance.EverybodyIsTryingToSleep())
-                    {
-                        return false;
-                    }
                     EnvMan.instance.SkipToMorning();
                     __instance.m_sleeping = true;
                     ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, "SleepStart", Array.Empty<object>());
@@ -121,69 +123,66 @@ namespace Sleepover
             [HarmonyPatch(nameof(Bed.GetHoverText))]
             public static bool GetHoverText(Bed __instance, ref string __result)
             {
-                // No special logic, so defer to normal execution
-                if (!modEnabled.Value && !enableMultipleBedfellows.Value && !sleepWithoutSpawnpoint.Value)
+                if (!modEnabled.Value)
                 {
                     return true;
                 }
-
-                // @todo Better hook and not replace entire method
+                
+                string sleepHover = "[<color=yellow><b>$KEY_Use</b></color>] $piece_bed_sleep\n";
+                string claimHover = "[<color=yellow><b>shift + $KEY_Use</b></color>] $piece_bed_claim\n";
+                string setSpawnHover = "[<color=yellow><b>alt + $KEY_Use</b></color>] $piece_bed_setspawn\n";
+                bool maySleep;
+                bool mayClaim;
+                bool maySetSpawn;
                 string ownerName = __instance.GetOwnerName();
-                if (ownerName == "")
+                string ownerText = ownerName + "'s $piece_bed\n";
+
+                // Sleep rules
+                maySleep = (
+                    (__instance.IsMine() && __instance.IsCurrent()) || // Default - it's my claimed spawn bed
+                    ((!__instance.IsMine() && ownerName != "" && enableMultipleBedfellows.Value)) || // Many sleepers
+                    (ownerName == "" && sleepWithoutClaiming.Value) || // Ignore claim rules
+                    (!__instance.IsCurrent() && sleepWithoutSpawnpoint.Value) // Ignore spawn rules
+                );
+
+                // Claim rules
+                mayClaim = (
+                    (ownerName == "")
+                );
+
+                // Set spawn rules
+                maySetSpawn = (
+                    (!__instance.IsCurrent() && __instance.IsMine()) || // Default - it's my bed, but not currently spawn
+                    (!__instance.IsCurrent() && (!__instance.IsMine() && multipleSpawnpointsPerBed.Value)) // Allow multiple spawns
+                );
+
+                __result = ownerName != "" ? ownerText : "$piece_bed_unclaimed\n";
+
+                if (maySleep)
                 {
-                    string claimText = "$piece_bed_unclaimed\n[<color=yellow><b>$KEY_Use</b></color>] $piece_bed_claim";
-
-                    if (sleepWithoutClaiming.Value)
-                    {
-                        claimText += "\n[<color=yellow><b>left shift + $KEY_Use</b></color>] $piece_bed_sleep";
-                    }
-
-                    __result = Localization.instance.Localize(claimText);
-
-                    return false;
+                    __result += sleepHover;
                 }
 
-                string ownerText = ownerName + "'s $piece_bed";
-
-                if (!__instance.IsMine())
+                if (mayClaim)
                 {
-                    if (enableMultipleBedfellows.Value)
-                    {
-                        __result = Localization.instance.Localize(ownerText + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_bed_sleep");
-                    } else
-                    {
-                        __result = Localization.instance.Localize(ownerText);
-                    }
-
-                    return false;
+                    __result += claimHover;
                 }
 
-                if (sleepWithoutSpawnpoint.Value)
+                if (maySetSpawn)
                 {
-                    __result = Localization.instance.Localize(ownerText + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_bed_sleep");
-                    return false;
+                    __result += setSpawnHover;
                 }
 
-                if (!__instance.IsCurrent())
-                {
-                    __result = Localization.instance.Localize(ownerText + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_bed_setspawn");
-                }
-
+                __result = Localization.instance.Localize(__result);
                 return false;
             }
 
             [HarmonyPrefix]
-            [HarmonyPriority(Priority.High)]
+            [HarmonyPriority(Priority.VeryHigh)]
             [HarmonyPatch(nameof(Bed.Interact))]
             public static bool Interact(Bed __instance, ref bool __result, ref Humanoid human, ref bool repeat)
             {
                 if (!modEnabled.Value) {
-                    return true;
-                }
-
-                // No special logic, so defer to normal execution
-                if (!enableMultipleBedfellows.Value && !sleepWithoutSpawnpoint.Value && !sleepAnyTime.Value && !sleepWithoutClaiming.Value)
-                {
                     return true;
                 }
 
@@ -192,13 +191,37 @@ namespace Sleepover
                     return false;
                 }
 
-                long playerID = Game.instance.GetPlayerProfile().GetPlayerID();
-                bool owner = __instance.GetOwner() != 0L;
-                bool altFunc = Input.GetKey(ALT_FUNC_KEY);
                 Player thePlayer = human as Player;
+                long playerID = Game.instance.GetPlayerProfile().GetPlayerID();
+                bool isClaimIntent = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+                bool isSetSpawnIntent = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
+                bool isSleepIntent = !isClaimIntent && !isSetSpawnIntent;
 
-                // If there is no owner at all
-                if (!owner)
+                bool maySleep;
+                bool mayClaim;
+                bool maySetSpawn;
+                string ownerName = __instance.GetOwnerName();
+
+                // Sleep rules
+                maySleep = (
+                    (__instance.IsMine() && __instance.IsCurrent()) || // Default - it's my claimed spawn bed
+                    ((!__instance.IsMine() && ownerName != "" && enableMultipleBedfellows.Value)) || // Many sleepers
+                    (ownerName == "" && sleepWithoutClaiming.Value) || // Ignore claim rules
+                    (!__instance.IsCurrent() && sleepWithoutSpawnpoint.Value) // Ignore spawn rules
+                );
+
+                // Claim rules
+                mayClaim = (
+                    (ownerName == "")
+                );
+
+                // Set spawn rules
+                maySetSpawn = (
+                    (!__instance.IsCurrent() && __instance.IsMine()) || // Default - it's my bed, but not currently spawn
+                    (!__instance.IsCurrent() && (!__instance.IsMine() && multipleSpawnpointsPerBed.Value)) // Allow multiple spawns
+                );
+
+                if (isClaimIntent && mayClaim)
                 {
                     if (!__instance.CheckExposure(thePlayer))
                     {
@@ -206,80 +229,71 @@ namespace Sleepover
                         return false;
                     }
 
-                    if (!altFunc)
-                    {
-                        __instance.SetOwner(playerID, Game.instance.GetPlayerProfile().GetName());
-                        __result = false;
-                        return false;
-                    }
-
-                    if (!sleepWithoutSpawnpoint.Value)
-                    {
-                        Game.instance.GetPlayerProfile().SetCustomSpawnPoint(__instance.GetSpawnPoint());
-                        human.Message(MessageHud.MessageType.Center, "$msg_spawnpointset", 0, null);
-                    }
-
-                    if (!altFunc && sleepWithoutClaiming.Value && sleepWithoutSpawnpoint.Value)
-                    {
-                        __result = false;
-                        return false;
-                    }
+                    __instance.SetOwner(playerID, Game.instance.GetPlayerProfile().GetName());
                 }
-                
-                // If the bed belongs to the current player
-                if (__instance.IsMine() || enableMultipleBedfellows.Value)
+
+                if (isSetSpawnIntent && maySetSpawn)
                 {
-                    if (__instance.IsCurrent() || sleepWithoutSpawnpoint.Value)
+                    if (!__instance.CheckExposure(thePlayer))
                     {
-                        if (!sleepAnyTime.Value && !EnvMan.instance.IsAfternoon() && !EnvMan.instance.IsNight())
-                        {
-                            human.Message(MessageHud.MessageType.Center, "$msg_cantsleep", 0, null);
-                            __result = false;
-                            return false;
-                        }
-                        if (!__instance.CheckEnemies(thePlayer))
-                        {
-                            __result = false;
-                            return false;
-                        }
-                        if (!__instance.CheckExposure(thePlayer))
-                        {
-                            __result = false;
-                            return false;
-                        }
-                        if (!__instance.CheckFire(thePlayer))
-                        {
-                            __result = false;
-                            return false;
-                        }
-                        if (!__instance.CheckWet(thePlayer))
-                        {
-                            __result = false;
-                            return false;
-                        }
-
-                        human.AttachStart(__instance.m_spawnPoint, human.gameObject, true, true, false, "attach_bed", new Vector3(0f, 0.5f, 0f));
                         __result = false;
-
                         return false;
                     }
-                    else
-                    {
-                        if (!__instance.CheckExposure(thePlayer))
-                        {
-                            __result = false;
-                            return false;
-                        }
 
-                        if (!sleepWithoutSpawnpoint.Value)
-                        {
-                            Game.instance.GetPlayerProfile().SetCustomSpawnPoint(__instance.GetSpawnPoint());
-                            human.Message(MessageHud.MessageType.Center, "$msg_spawnpointset", 0, null);
-                        }
+                    // My bed, not current spawnpoint. Normal behaviour
+                    Game.instance.GetPlayerProfile().SetCustomSpawnPoint(__instance.GetSpawnPoint());
+                    human.Message(MessageHud.MessageType.Center, "$msg_spawnpointset", 0, null);
+                    return false;
+                }
+
+                // Triggering "sleep" hover actions
+                if (isSleepIntent && maySleep)
+                {
+                    if (!sleepAnyTime.Value && !EnvMan.instance.IsAfternoon() && !EnvMan.instance.IsNight())
+                    {
+                        human.Message(MessageHud.MessageType.Center, "$msg_cantsleep", 0, null);
+                        __result = false;
+                        return false;
                     }
+                    if (!__instance.CheckEnemies(thePlayer))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                    if (!__instance.CheckExposure(thePlayer))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                    if (!__instance.CheckFire(thePlayer))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                    if (!__instance.CheckWet(thePlayer))
+                    {
+                        __result = false;
+                        return false;
+                    }
+
+                    human.AttachStart(__instance.m_spawnPoint, human.gameObject, true, true, false, "attach_bed", new Vector3(0f, 0.5f, 0f));
                 }
 
                 __result = false;
+                return false;
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(Bed.IsCurrent))]
+            public static bool IsCurrent(Bed __instance, ref bool __result)
+            {
+                if (!__instance.IsMine() && !multipleSpawnpointsPerBed.Value)
+                {
+                    __result = false;
+                    return false;
+                }
+
+                __result = Vector3.Distance(__instance.GetSpawnPoint(), Game.instance.GetPlayerProfile().GetCustomSpawnPoint()) < 1f;
                 return false;
             }
 
