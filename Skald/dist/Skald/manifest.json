@@ -1,10 +1,10 @@
 {
     "name": "Skald",
-    "version_number": "1.0.1",
+    "version_number": "1.0.2",
     "website_url": "https://github.com/timneill/ValheimMods/tree/main/Skald",
     "description": "Adds extra lore-friendly content to dreams and runestones.",
     "dependencies": [
-      "denikson-BepInExPack_Valheim-5.4.1700",
-      "ValheimModding-Jotunn-2.4.6"
+      "denikson-BepInExPack_Valheim-5.4.2102",
+      "ValheimModding-Jotunn-2.11.2"
     ]
   }

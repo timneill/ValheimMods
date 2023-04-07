@@ -17,11 +17,11 @@ namespace Skald
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.skald";
         const string PLUGIN_NAME = "Skald";
-        const string PLUGIN_VERSION = "1.0.0";
+        const string PLUGIN_VERSION = "1.0.2";
 
-        const string LANGUAGE_FILE = @"\localization.language";
-        const string DREAM_TEXTS = @"\dreams.json";
-        const string RUNESTONE_TEXTS = @"\runestones.json";
+        const string LANGUAGE_FILE = "localization.language";
+        const string DREAM_TEXTS = "dreams.json";
+        const string RUNESTONE_TEXTS = "runestones.json";
 
         private readonly Harmony harmony = new Harmony(PLUGIN_ID);
 
@@ -72,7 +72,7 @@ namespace Skald
             string libDir = Path.GetDirectoryName(assembly.Location);
 
             // Loading language file manually
-            m_localization.AddLanguageFile(File.ReadAllText(libDir + LANGUAGE_FILE));
+            m_localization.AddLanguageFile(File.ReadAllText(Path.Combine(libDir, LANGUAGE_FILE)));
 
             Logger.Log(LogLevel.Info, "Loading dream texts...");
             LoadDreamTexts(libDir);
@@ -86,7 +86,7 @@ namespace Skald
         private void LoadDreamTexts(string libDir)
         {
             // Dream texts are a list of dictionary values with texts and conditional keys
-            List<DreamDataItem> dreamTexts = JSON.ToObject<List<DreamDataItem>>(File.ReadAllText(libDir + DREAM_TEXTS));
+            List<DreamDataItem> dreamTexts = JSON.ToObject<List<DreamDataItem>>(File.ReadAllText(Path.Combine(libDir, DREAM_TEXTS)));
 
             foreach (DreamDataItem dreamData in dreamTexts)
             {
@@ -104,7 +104,7 @@ namespace Skald
         private void LoadRunestoneTexts(string libDir)
         {
             // Runestone texts are a dictionary: {"runestone type" => ["translation keys"]}
-            Dictionary<string, List<string>> runestoneTextData = JSON.ToObject<Dictionary<string, List<string>>>(File.ReadAllText(libDir + RUNESTONE_TEXTS));
+            Dictionary<string, List<string>> runestoneTextData = JSON.ToObject<Dictionary<string, List<string>>>(File.ReadAllText(Path.Combine(libDir, RUNESTONE_TEXTS)));
             Logger.Log(LogLevel.Info, $"Loaded {runestoneTextData.Count} runestone targets");
 
             foreach (var runestoneData in runestoneTextData)

@@ -13,7 +13,7 @@ namespace Sleepover
     {
         const string PLUGIN_ID = "net.kinghfb.valheim.sleepover";
         const string PLUGIN_NAME = "Sleepover";
-        const string PLUGIN_VERSION = "1.1.0";
+        const string PLUGIN_VERSION = "1.1.1";
 
         private readonly Harmony harmony = new Harmony(PLUGIN_ID);
 
@@ -91,7 +91,7 @@ namespace Sleepover
                 {
                     return true;
                 }
-
+                
                 if (!ZNet.instance.IsServer())
                 {
                     return false;
@@ -101,15 +101,19 @@ namespace Sleepover
                     if (!EnvMan.instance.IsTimeSkipping())
                     {
                         __instance.m_sleeping = false;
-                        ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, "SleepStop", Array.Empty<object>());
+                        ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, "SleepStop");
                         return false;
                     }
                 }
-                else if (!EnvMan.instance.IsTimeSkipping() && (EnvMan.instance.IsAfternoon() || EnvMan.instance.IsNight()) && __instance.EverybodyIsTryingToSleep())
+                else if (
+                    !EnvMan.instance.IsTimeSkipping() &&
+                    ((EnvMan.instance.IsAfternoon() || EnvMan.instance.IsNight()) || sleepAnyTime.Value) &&
+                    __instance.EverybodyIsTryingToSleep()
+                )
                 {
                     EnvMan.instance.SkipToMorning();
                     __instance.m_sleeping = true;
-                    ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, "SleepStart", Array.Empty<object>());
+                    ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, "SleepStart");
                 }
 
                 return false;
